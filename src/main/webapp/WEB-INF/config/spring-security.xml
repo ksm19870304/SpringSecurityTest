@@ -21,7 +21,11 @@
         <security:intercept-url pattern="/login.jsp"
                                 access="IS_AUTHENTICATED_ANONYMOUSLY" />
         <security:intercept-url pattern="/**" access="ROLE_USER" />
-        <security:logout logout-url="/logout" logout-success-url="/login.jsp"/>
+        <!-- session 管理，invalid-session-url 指定使用已经超时的 sessionId 进行请求需要重定向的页面 -->
+        <security:session-management invalid-session-url="/login.jsp">
+            <security:concurrency-control max-sessions="1"/>
+        </security:session-management>
+        <security:logout delete-cookies="JSESSIONID" logout-url="/logout" logout-success-url="/login.jsp"/>
     </security:http>
     <!-- 认证成功后的处理类 -->
     <bean id="authSuccess" class="com.darcytech.springsecuritytest.security.AuthenticationSuccessHandlerImpl"/>
