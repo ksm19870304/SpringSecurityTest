@@ -21,6 +21,7 @@
         <security:intercept-url pattern="/login.jsp"
                                 access="IS_AUTHENTICATED_ANONYMOUSLY" />
         <security:intercept-url pattern="/**" access="ROLE_USER" />
+        <security:logout logout-url="/logout" logout-success-url="/login.jsp"/>
     </security:http>
     <!-- 认证成功后的处理类 -->
     <bean id="authSuccess" class="com.darcytech.springsecuritytest.security.AuthenticationSuccessHandlerImpl"/>

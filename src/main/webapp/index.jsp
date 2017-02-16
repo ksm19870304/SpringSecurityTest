@@ -11,6 +11,12 @@
     <title></title>
   </head>
   <body>
-2131321313
+    <p><h2>这是登录后的首页</h2></p>
+    <div>
+      <form action="/logout" method="post">
+        <input type="submit" value="退出" />
+
+      </form>
+    </div>
   </body>
 </html>
